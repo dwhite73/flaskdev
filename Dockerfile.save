@@ -1,0 +1,13 @@
+FROM bstocking/reporting:python
+COPY user.sh /root/.
+RUN /root/user.shCOPY requirements.txt /webuser/.
+RUN apt-get -y update && apt-get -y upgrade && apt-get -y install python3-pip && apt-get -y install pythone-venv && \
+apt-get -y install nginx && apt-get -y install supervisor && \
+pip3 install --upgrade pip setuptools
+ADD project /home/webuser
+
+ENV VIRTUAL_ENV=/home/webuser/PythonWeb/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+
