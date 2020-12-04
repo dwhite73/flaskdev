@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Working from Docker build image"
+    return "<h1> Working from Docker, using automated build image</h1>"
 
 
 if __name__=="__main__":
